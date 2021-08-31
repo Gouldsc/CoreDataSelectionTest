@@ -19,7 +19,7 @@ struct SourceListView: View
 		{
 			List( selection: $selection, content:
 			{
-				ForEach( entityAs, id: \.self.ID )
+				ForEach( entityAs, id: \.ID )
 				{
 					(tEntityA: EntityA) in
 						EntityASourceListRowView( entityA: tEntityA,

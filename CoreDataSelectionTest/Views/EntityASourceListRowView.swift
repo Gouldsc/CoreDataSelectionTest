@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EntityASourceListRowView: View
 {
-	var entityA: EntityA
+	@State var entityA: EntityA
 	@State var isToggled: Bool
 	
 	var body: some View
