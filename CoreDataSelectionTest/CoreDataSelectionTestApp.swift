@@ -8,13 +8,16 @@
 import SwiftUI
 
 @main
-struct CoreDataSelectionTestApp: App {
+struct CoreDataSelectionTestApp: App
+{
     let persistenceController = PersistenceController.shared
 
-    var body: some Scene {
-        WindowGroup {
+    var body: some Scene
+	{
+        WindowGroup
+		{
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment( \.managedObjectContext, persistenceController.container.viewContext )
         }
     }
 }
