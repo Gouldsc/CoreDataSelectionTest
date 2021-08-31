@@ -10,5 +10,5 @@ import CoreData
 
 extension EntityA
 {
-	//	EntityA-specific implementations go here
+	//	EntityA-specific data processing goes here. A pseudo ViewModel
 }

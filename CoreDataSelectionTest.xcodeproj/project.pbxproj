@@ -19,6 +19,10 @@
 		9691A10A26DDA83D00791687 /* SelectableObject+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A10926DDA83D00791687 /* SelectableObject+helper.swift */; };
 		9691A10C26DDA9AA00791687 /* EntityA+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A10B26DDA9AA00791687 /* EntityA+helper.swift */; };
 		9691A10E26DDBD4F00791687 /* EntityADetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A10D26DDBD4F00791687 /* EntityADetailView.swift */; };
+		9691A11026DDC9DF00791687 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A10F26DDC9DF00791687 /* Selection.swift */; };
+		9691A11526DDCF9100791687 /* SelectionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11426DDCF9100791687 /* SelectionTestViewModel.swift */; };
+		9691A11726DDD30F00791687 /* SourceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11626DDD30F00791687 /* SourceListView.swift */; };
+		9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		9691A10926DDA83D00791687 /* SelectableObject+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectableObject+helper.swift"; sourceTree = "<group>"; };
 		9691A10B26DDA9AA00791687 /* EntityA+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityA+helper.swift"; sourceTree = "<group>"; };
 		9691A10D26DDBD4F00791687 /* EntityADetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityADetailView.swift; sourceTree = "<group>"; };
+		9691A10F26DDC9DF00791687 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		9691A11426DDCF9100791687 /* SelectionTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTestViewModel.swift; sourceTree = "<group>"; };
+		9691A11626DDD30F00791687 /* SourceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListView.swift; sourceTree = "<group>"; };
+		9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityASourceListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				9691A0DA26DD84F000791687 /* CoreDataSelectionTestApp.swift */,
-				9691A0DC26DD84F000791687 /* ContentView.swift */,
-				9691A10D26DDBD4F00791687 /* EntityADetailView.swift */,
-				9691A0E326DD84F100791687 /* Persistence.swift */,
-				9691A10926DDA83D00791687 /* SelectableObject+helper.swift */,
-				9691A10B26DDA9AA00791687 /* EntityA+helper.swift */,
+				9691A11126DDC9FF00791687 /* Views */,
+				9691A11C26DDD7EC00791687 /* ViewModels */,
+				9691A11226DDCA0F00791687 /* Models */,
+				9691A11326DDCA2000791687 /* Entities */,
 				9691A0E526DD84F100791687 /* CoreDataSelectionTest.xcdatamodeld */,
 				9691A0DE26DD84F100791687 /* Assets.xcassets */,
 				9691A0E026DD84F100791687 /* Preview Content */,
@@ -140,6 +147,43 @@
 				9691A0FC26DD84F100791687 /* CoreDataSelectionTestUITestsLaunchTests.swift */,
 			);
 			path = CoreDataSelectionTestUITests;
+			sourceTree = "<group>";
+		};
+		9691A11126DDC9FF00791687 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9691A0DC26DD84F000791687 /* ContentView.swift */,
+				9691A11626DDD30F00791687 /* SourceListView.swift */,
+				9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */,
+				9691A10D26DDBD4F00791687 /* EntityADetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9691A11226DDCA0F00791687 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9691A0E326DD84F100791687 /* Persistence.swift */,
+				9691A10F26DDC9DF00791687 /* Selection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9691A11326DDCA2000791687 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9691A10926DDA83D00791687 /* SelectableObject+helper.swift */,
+				9691A10B26DDA9AA00791687 /* EntityA+helper.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		9691A11C26DDD7EC00791687 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9691A11426DDCF9100791687 /* SelectionTestViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,13 +316,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9691A11026DDC9DF00791687 /* Selection.swift in Sources */,
 				9691A10E26DDBD4F00791687 /* EntityADetailView.swift in Sources */,
 				9691A10C26DDA9AA00791687 /* EntityA+helper.swift in Sources */,
 				9691A10A26DDA83D00791687 /* SelectableObject+helper.swift in Sources */,
 				9691A0E426DD84F100791687 /* Persistence.swift in Sources */,
+				9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */,
 				9691A0DD26DD84F000791687 /* ContentView.swift in Sources */,
+				9691A11526DDCF9100791687 /* SelectionTestViewModel.swift in Sources */,
 				9691A0DB26DD84F000791687 /* CoreDataSelectionTestApp.swift in Sources */,
 				9691A0E726DD84F100791687 /* CoreDataSelectionTest.xcdatamodeld in Sources */,
+				9691A11726DDD30F00791687 /* SourceListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

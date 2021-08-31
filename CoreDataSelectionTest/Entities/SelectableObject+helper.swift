@@ -21,4 +21,9 @@ extension SelectableObject
 			name_ = newValue
 		}
 	}
+	
+	var ID: ObjectIdentifier
+	{
+		return self.id
+	}
 }
