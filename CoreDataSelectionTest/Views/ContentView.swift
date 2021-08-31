@@ -24,8 +24,8 @@ struct ContentView: View
 			get:
 				{
 					guard let tSelectedID = selectedListItemId?.selectedId,
-						  let tNSManagedObjectID = PersistenceController.shared.managedObjectFor( url: tSelectedID ),
-						  let rSelectableObject = tNSManagedObjectID as? SelectableObject
+						  let tNSManagedObject = PersistenceController.shared.managedObjectFor( url: tSelectedID ),
+						  let rSelectableObject = tNSManagedObject as? SelectableObject
 					else
 					{
 						return nil
@@ -35,6 +35,7 @@ struct ContentView: View
 			set:
 				{
 					newValue in
+						//	FIXME: newValue is always nil--need to figure out why.
 						guard let tURLRepresentation = newValue?.objectID.uriRepresentation()
 						else
 						{
