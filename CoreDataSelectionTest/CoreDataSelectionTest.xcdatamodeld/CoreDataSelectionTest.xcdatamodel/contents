@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5304g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5506j" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EntityA" representedClassName="EntityA" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
         <attribute name="isActivated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="groups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group"/>
     </entity>
     <entity name="EntityC" representedClassName="EntityC" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
-        <attribute name="someAttribute" attributeType="String"/>
+        <attribute name="isActivated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
         <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EntityA" inverseName="groups" inverseEntity="EntityA"/>

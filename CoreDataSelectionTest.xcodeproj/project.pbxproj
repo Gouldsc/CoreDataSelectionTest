@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96430A1F26E08A4800F850A2 /* GroupSourceListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96430A1E26E08A4800F850A2 /* GroupSourceListRowView.swift */; };
+		96430A2126E08AE600F850A2 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96430A2026E08AE600F850A2 /* GroupDetailView.swift */; };
+		96430A2426E0A6D900F850A2 /* EntityCSourceListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96430A2326E0A6D900F850A2 /* EntityCSourceListRowView.swift */; };
+		96430A2626E0A73400F850A2 /* EntityCDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96430A2526E0A73400F850A2 /* EntityCDetailView.swift */; };
+		96430A2826E0A78300F850A2 /* EntityC+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96430A2726E0A78300F850A2 /* EntityC+helper.swift */; };
 		9691A0DB26DD84F000791687 /* CoreDataSelectionTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0DA26DD84F000791687 /* CoreDataSelectionTestApp.swift */; };
 		9691A0DD26DD84F000791687 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0DC26DD84F000791687 /* ContentView.swift */; };
 		9691A0DF26DD84F100791687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9691A0DE26DD84F100791687 /* Assets.xcassets */; };
@@ -43,6 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96430A1E26E08A4800F850A2 /* GroupSourceListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSourceListRowView.swift; sourceTree = "<group>"; };
+		96430A2026E08AE600F850A2 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
+		96430A2326E0A6D900F850A2 /* EntityCSourceListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCSourceListRowView.swift; sourceTree = "<group>"; };
+		96430A2526E0A73400F850A2 /* EntityCDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCDetailView.swift; sourceTree = "<group>"; };
+		96430A2726E0A78300F850A2 /* EntityC+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityC+helper.swift"; sourceTree = "<group>"; };
 		9691A0D726DD84F000791687 /* CoreDataSelectionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataSelectionTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9691A0DA26DD84F000791687 /* CoreDataSelectionTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSelectionTestApp.swift; sourceTree = "<group>"; };
 		9691A0DC26DD84F000791687 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +99,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96430A1D26E08A1200F850A2 /* EntityAViews */ = {
+			isa = PBXGroup;
+			children = (
+				9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */,
+				9691A10D26DDBD4F00791687 /* EntityADetailView.swift */,
+			);
+			path = EntityAViews;
+			sourceTree = "<group>";
+		};
+		96430A2226E08DE600F850A2 /* GroupViews */ = {
+			isa = PBXGroup;
+			children = (
+				96430A1E26E08A4800F850A2 /* GroupSourceListRowView.swift */,
+				96430A2026E08AE600F850A2 /* GroupDetailView.swift */,
+			);
+			path = GroupViews;
+			sourceTree = "<group>";
+		};
+		96430A2926E0A7F900F850A2 /* EntityCViews */ = {
+			isa = PBXGroup;
+			children = (
+				96430A2326E0A6D900F850A2 /* EntityCSourceListRowView.swift */,
+				96430A2526E0A73400F850A2 /* EntityCDetailView.swift */,
+			);
+			path = EntityCViews;
+			sourceTree = "<group>";
+		};
 		9691A0CE26DD84F000791687 = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +191,9 @@
 			children = (
 				9691A0DC26DD84F000791687 /* ContentView.swift */,
 				9691A11626DDD30F00791687 /* SourceListView.swift */,
-				9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */,
-				9691A10D26DDBD4F00791687 /* EntityADetailView.swift */,
+				96430A1D26E08A1200F850A2 /* EntityAViews */,
+				96430A2226E08DE600F850A2 /* GroupViews */,
+				96430A2926E0A7F900F850A2 /* EntityCViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +212,7 @@
 			children = (
 				9691A10926DDA83D00791687 /* SelectableObject+helper.swift */,
 				9691A10B26DDA9AA00791687 /* EntityA+helper.swift */,
+				96430A2726E0A78300F850A2 /* EntityC+helper.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -316,12 +355,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96430A1F26E08A4800F850A2 /* GroupSourceListRowView.swift in Sources */,
 				9691A11026DDC9DF00791687 /* Selection.swift in Sources */,
+				96430A2126E08AE600F850A2 /* GroupDetailView.swift in Sources */,
+				96430A2626E0A73400F850A2 /* EntityCDetailView.swift in Sources */,
 				9691A10E26DDBD4F00791687 /* EntityADetailView.swift in Sources */,
 				9691A10C26DDA9AA00791687 /* EntityA+helper.swift in Sources */,
 				9691A10A26DDA83D00791687 /* SelectableObject+helper.swift in Sources */,
 				9691A0E426DD84F100791687 /* Persistence.swift in Sources */,
+				96430A2426E0A6D900F850A2 /* EntityCSourceListRowView.swift in Sources */,
 				9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */,
+				96430A2826E0A78300F850A2 /* EntityC+helper.swift in Sources */,
 				9691A0DD26DD84F000791687 /* ContentView.swift in Sources */,
 				9691A11526DDCF9100791687 /* SelectionTestViewModel.swift in Sources */,
 				9691A0DB26DD84F000791687 /* CoreDataSelectionTestApp.swift in Sources */,

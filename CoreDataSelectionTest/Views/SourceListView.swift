@@ -10,39 +10,32 @@ import SwiftUI
 struct SourceListView: View
 {
 	@Environment( \.managedObjectContext ) private var viewContext
-	var entityAs: FetchedResults<EntityA>
-	@Binding var selection: Selection.ID?
-	private var entityASelection: Binding<EntityA.ID?>
-	{
-		Binding(
-			get:
-			{
-				guard let rSelection = self.selection,
-					  let tNSManagedObject = PersistenceController.shared.managedObjectFor( urlString: rSelection ),
-					  let rEntityA = tNSManagedObject as? EntityA
-				else
-				{
-					return nil
-				}
-				return rEntityA.id
-			},
-			set:
-			{
-				newValue in
-					guard let tEntityAId = newValue
-					else
-					{
-						return
-					}
-					self.selection = tEntityAId
-			} )
-	}
 	
+	//	MARK: - EntityA @FetchRequest
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityA.name_,
+													   ascending: true )],
+				   animation: .default )
+	private var entityAs: FetchedResults<EntityA>
+	
+	//	MARK: - Group @FetchRequest
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \Group.name_,
+													   ascending: true )],
+				   animation: .default )
+	private var groups: FetchedResults<Group>
+	
+	//	MARK: - EntityC @FetchRequest
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityC.name_,
+													   ascending: true )],
+				   animation: .default )
+	private var entityCs: FetchedResults<EntityC>
+		
+	@Binding var selection: Selection.ID?
+
 	var body: some View
 	{
-		Section( "Entity A", content:
+		List( selection: entitySelection )
 		{
-			List( selection: entityASelection, content:
+			Section( "Entity A" )
 			{
 				ForEach( entityAs, id: \.id )
 				{
@@ -50,23 +43,45 @@ struct SourceListView: View
 						EntityASourceListRowView( entityA: tEntityA,
 												isToggled: tEntityA.isActivated )
 				}
-				.onDelete( perform: deleteItems )
-			} )
-				.listStyle( SidebarListStyle() )
-		})
-		// Add Group section here
-		// Add Entity C section here
-		
+			}
+			Section( "Groups" )
+			{
+				ForEach( groups, id: \.id )
+				{
+					(tGroup: Group) in
+						GroupSourceListRowView( group: tGroup )
+				}
+			}
+			Section( "Entity C" )
+			{
+				ForEach( entityCs, id: \.id )
+				{
+					(tEntityC: EntityC) in
+					EntityCSourceListRowView( entityC: tEntityC,
+											  isToggled: tEntityC.isActivated )
+				}
+			}
+		}
+		.listStyle( SidebarListStyle() )
+			
 		.toolbar
 		{
-			Button( action: addItem )
+			Button( action: addEntityA )
 			{
 				Label( "Add Item", systemImage: "plus" )
+			}
+			Button( action: addGroup )
+			{
+				Label( "Add Group", systemImage: "folder.fill.badge.plus" )
+			}
+			Button( action: addEntityC )
+			{
+				Label( "Add Entity C", systemImage: "note.text.badge.plus" )
 			}
 		}
 	}
 	
-	private func addItem()
+	private func addEntityA()
 	{
 		withAnimation
 		{
@@ -77,14 +92,63 @@ struct SourceListView: View
 		}
 	}
 	
+	private func addGroup()
+	{
+		withAnimation
+		{
+			let tGroup = Group( context: viewContext )
+			tGroup.name = "Group: \(Date())"
+			
+			PersistenceController.shared.save()
+		}
+	}
+	
+	private func addEntityC()
+	{
+		withAnimation
+		{
+			let entityC = EntityC( context: viewContext )
+			entityC.name = "EntityC: \(Date())"
+			
+			PersistenceController.shared.save()
+		}
+	}
+	
 	private func deleteItems( offsets: IndexSet )
 	{
 		withAnimation
 		{
 			offsets.map { entityAs[$0] }.forEach( viewContext.delete )
-			
+
 			PersistenceController.shared.save()
 		}
 	}
+	
+	private var entitySelection: Binding<SelectableObject.ID?>
+	{
+		Binding(
+			get:
+				{
+					guard let rSelection = self.selection,
+						  let tNSManagedObject = PersistenceController.shared.managedObjectFor( urlString: rSelection ),
+						  let rEntity = tNSManagedObject as? SelectableObject
+					else
+					{
+						return nil
+					}
+					return rEntity.id
+				},
+			set:
+				{
+					newValue in
+					guard let tEntityId = newValue
+					else
+					{
+						return
+					}
+					self.selection = tEntityId
+				} )
+	}
 }
+
 

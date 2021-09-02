@@ -27,7 +27,6 @@ struct Selection: RawRepresentable, Identifiable, Codable
 	
 	init( selectedId theSelectedId: String )
 	{
-		
 		self.selectedId = theSelectedId
 	}
 	
