@@ -16,41 +16,13 @@ struct ContentView: View
 													 ascending: true )],
 						 animation: .default )
     private var entityAs: FetchedResults<EntityA>
-	@SceneStorage( ManagerKeys.selection ) private var selectedListItemId: Selection?
-
-	private var selection: Binding<SelectableObject?>
-	{
-		Binding(
-			get:
-				{
-					guard let tSelectedID = selectedListItemId?.selectedId,
-						  let tNSManagedObject = PersistenceController.shared.managedObjectFor( url: tSelectedID ),
-						  let rSelectableObject = tNSManagedObject as? SelectableObject
-					else
-					{
-						return nil
-					}
-					return rSelectableObject
-				},
-			set:
-				{
-					newValue in
-						//	FIXME: newValue is always nil--need to figure out why.
-						guard let tURLRepresentation = newValue?.objectID.uriRepresentation()
-						else
-						{
-							selectedListItemId = nil
-							return
-						}
-						let tSelectedItem = Selection( selectedId: tURLRepresentation )
-						selectedListItemId = tSelectedItem
-				} )
-	}
+	@SceneStorage( "selectedListItemId" ) private var selectedListItemId: Selection.ID?
+	
     var body: some View
 	{
 		NavigationView
 		{
-			SourceListView( entityAs: entityAs, selection: selection )
+			SourceListView( entityAs: entityAs, selection: $selectedListItemId )
 				.environment( \.managedObjectContext, viewContext )
 			Text( "Detail, no selection" )
 		}

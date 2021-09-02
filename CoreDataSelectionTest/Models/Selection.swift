@@ -8,13 +8,24 @@
 import Foundation
 import CoreData
 
-struct Selection: RawRepresentable
+struct Selection: RawRepresentable, Identifiable, Codable
 {
 	typealias RawValue = String
 	
-	var selectedId: URL
+	var selectedId: String
+	var id: String
+	{
+		get
+		{
+			selectedId
+		}
+		set
+		{
+			selectedId = newValue
+		}
+	}
 	
-	init( selectedId theSelectedId: URL )
+	init( selectedId theSelectedId: String )
 	{
 		
 		self.selectedId = theSelectedId
@@ -22,16 +33,11 @@ struct Selection: RawRepresentable
 	
 	init?( rawValue theRawValue: RawValue )
 	{
-		guard let tId  = URL( string: theRawValue )
-		else
-		{
-			return nil
-		}
-		self.selectedId = tId
+		self.selectedId = theRawValue
 	}
 	
 	var rawValue: String
 	{
-		return selectedId.absoluteString
+		return selectedId
 	}
 }

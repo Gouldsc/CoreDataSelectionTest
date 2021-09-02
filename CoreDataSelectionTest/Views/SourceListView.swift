@@ -11,15 +11,40 @@ struct SourceListView: View
 {
 	@Environment( \.managedObjectContext ) private var viewContext
 	var entityAs: FetchedResults<EntityA>
-	@Binding var selection: SelectableObject?
+	@Binding var selection: Selection.ID?
+	private var entityASelection: Binding<EntityA.ID?>
+	{
+		Binding(
+			get:
+			{
+				guard let rSelection = self.selection,
+					  let tNSManagedObject = PersistenceController.shared.managedObjectFor( urlString: rSelection ),
+					  let rEntityA = tNSManagedObject as? EntityA
+				else
+				{
+					return nil
+				}
+				return rEntityA.id
+			},
+			set:
+			{
+				newValue in
+					guard let tEntityAId = newValue
+					else
+					{
+						return
+					}
+					self.selection = tEntityAId
+			} )
+	}
 	
 	var body: some View
 	{
 		Section( "Entity A", content:
 		{
-			List( selection: $selection, content:
+			List( selection: entityASelection, content:
 			{
-				ForEach( entityAs )
+				ForEach( entityAs, id: \.id )
 				{
 					(tEntityA: EntityA) in
 						EntityASourceListRowView( entityA: tEntityA,
@@ -27,7 +52,7 @@ struct SourceListView: View
 				}
 				.onDelete( perform: deleteItems )
 			} )
-			.listStyle( SidebarListStyle() )
+				.listStyle( SidebarListStyle() )
 		})
 		// Add Group section here
 		// Add Entity C section here

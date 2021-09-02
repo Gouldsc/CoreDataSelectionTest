@@ -21,4 +21,9 @@ extension SelectableObject
 			name_ = newValue
 		}
 	}
+	
+	public var id: String
+	{
+		self.objectID.uriRepresentation().absoluteString
+	}
 }

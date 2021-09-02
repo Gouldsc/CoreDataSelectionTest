@@ -44,9 +44,10 @@ struct PersistenceController
 		}
 	}
 	
-	func managedObjectFor( url theURL: URL ) -> NSManagedObject?
+	func managedObjectFor( urlString theURLString: String ) -> NSManagedObject?
 	{
-		guard let tNSManagedObjectID = container.viewContext.persistentStoreCoordinator?.managedObjectID( forURIRepresentation: theURL )
+		guard let tURL = URL( string: theURLString ),
+			  let tNSManagedObjectID = container.viewContext.persistentStoreCoordinator?.managedObjectID( forURIRepresentation: tURL )
 		else
 		{
 			return nil

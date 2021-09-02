@@ -11,7 +11,6 @@ import SwiftUI
 struct CoreDataSelectionTestApp: App
 {
     let persistenceController = PersistenceController.shared
-	let manager = SelectionTestViewModel()
 
     var body: some Scene
 	{
@@ -19,7 +18,6 @@ struct CoreDataSelectionTestApp: App
 		{
             ContentView()
                 .environment( \.managedObjectContext, persistenceController.container.viewContext )
-				.environmentObject( manager )
         }
     }
 }
