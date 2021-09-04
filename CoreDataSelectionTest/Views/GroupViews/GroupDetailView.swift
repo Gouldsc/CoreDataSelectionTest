@@ -16,9 +16,8 @@ struct GroupDetailView: View
 													   ascending: true )],
 				   animation: .default )
 	private var entityAs: FetchedResults<EntityA>
-	
+		
 	@State var group: Group
-	@State private var isToggled = false
 	
 	var body: some View
 	{
@@ -27,36 +26,40 @@ struct GroupDetailView: View
 			Text( group.name )
 				.font(.largeTitle)
 				.bold()
-			List
+			
+			ForEach( entityAs )
 			{
-				ForEach( entityAs )
-				{
-					tEntityA in
-						HStack
+				tEntityA in
+					HStack
 					{
 						Text( tEntityA.name )
-						Toggle( "title", isOn: $isToggled )
-							.onChange( of: self.isToggled, perform:
-							{
-								updateIsActivatedStatus( to: $0 )
-							} )
-							.labelsHidden()
+							.foregroundColor( group.contains( entityA: tEntityA ) ? .green : .gray )
+						Spacer()
+						Button( action:
+								{
+									addOrRemove( entity: tEntityA )
+								} )
+								{
+									Image( systemName: group.contains( entityA: tEntityA ) ? "minus.circle" : "plus.circle" )
+								}
+								.foregroundColor( group.contains( entityA: tEntityA ) ? .red : .green )
+								.buttonStyle( .plain )
 					}
-				}
 			}
-		}
+		}.padding( 50 )
 	}
 	
-	private func updateIsActivatedStatus( to: Bool )
+	private func addOrRemove( entity theEntity: EntityA )
 	{
-		switch isToggled
+		switch group.contains( entityA: theEntity )
 		{
 			case true:
-				print( "ON" )
+				theEntity.removeFromGroups( group )
 				
 			case false:
-				print( "OFF" )
+				theEntity.addToGroups( group )
 		}
+		
 		PersistenceController.shared.save()
 	}
 }

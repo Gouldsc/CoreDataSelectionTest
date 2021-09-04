@@ -2,16 +2,16 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5506j" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EntityA" representedClassName="EntityA" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
         <attribute name="isActivated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <relationship name="groups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group"/>
     </entity>
     <entity name="EntityC" representedClassName="EntityC" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
         <attribute name="isActivated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
     <entity name="Group" representedClassName="Group" parentEntity="SelectableObject" syncable="YES" codeGenerationType="class">
-        <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EntityA" inverseName="groups" inverseEntity="EntityA"/>
+        <relationship name="groupMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EntityA" inverseName="groups" inverseEntity="EntityA"/>
     </entity>
     <entity name="SelectableObject" representedClassName="SelectableObject" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <attribute name="name_" attributeType="String"/>
+        <attribute name="name_" attributeType="String" defaultValueString="Untitled"/>
     </entity>
     <elements>
         <element name="EntityA" positionX="-63" positionY="-9" width="128" height="59"/>

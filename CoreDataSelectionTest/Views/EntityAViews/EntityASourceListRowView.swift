@@ -17,7 +17,7 @@ struct EntityASourceListRowView: View
 		HStack
 		{
 			Image( systemName: "swift" )
-			NavigationLink( entityA.name, destination: EntityADetailView( entityA: entityA ) )
+			NavigationLink( entityA.name, destination: EntityADetailView( entityA: $entityA ) )
 			Spacer()
 			Toggle( "title", isOn: $isToggled )
 				.onChange( of: self.isToggled, perform:
