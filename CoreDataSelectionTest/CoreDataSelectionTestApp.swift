@@ -11,13 +11,20 @@ import SwiftUI
 struct CoreDataSelectionTestApp: App
 {
     let persistenceController = PersistenceController.shared
+	var managedObjectContext: NSManagedObjectContext
+	{
+		let rContext = persistenceController.container.viewContext
+		rContext.undoManager = UndoManager()
+		
+		return rContext
+	}
 
     var body: some Scene
 	{
         WindowGroup
 		{
             ContentView()
-                .environment( \.managedObjectContext, persistenceController.container.viewContext )
+                .environment( \.managedObjectContext, managedObjectContext )
         }
     }
 }

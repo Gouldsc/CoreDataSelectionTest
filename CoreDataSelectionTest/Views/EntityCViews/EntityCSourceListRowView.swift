@@ -17,7 +17,7 @@ struct EntityCSourceListRowView: View
 		HStack
 		{
 			Image( systemName: "note.text" )
-			NavigationLink( entityC.name, destination: EntityCDetailView( entityC: entityC ) )
+			NavigationLink( entityC.name, destination: EntityCDetailView( entityC: $entityC ) )
 			Spacer()
 			Toggle( "title", isOn: $isToggled )
 				.onChange( of: self.isToggled, perform:

@@ -12,7 +12,7 @@ struct ContentView: View
 {
     @Environment(\.managedObjectContext) private var viewContext
 	
-	//	FIXME: This is a workaround. @SceneStorage conflicts with @FetchRequest, using @AppStorage temporarily
+	//	FIXME: This is a workaround. @SceneStorage conflicts with @FetchRequest. I'm using @AppStorage temporarily until Apple's bug is fixed.
 	@AppStorage( "ContentView.selectedListItemId" ) private var selectedListItemId: Selection.ID?
 //	@SceneStorage( "ContentView.selectedListItemId" ) private var selectedListItemId: Selection.ID?
 	
