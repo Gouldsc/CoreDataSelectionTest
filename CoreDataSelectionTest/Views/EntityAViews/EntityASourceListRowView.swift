@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EntityASourceListRowView: View
 {
+	@Environment( \.managedObjectContext ) private var viewContext
+	
 	@State var entityA: EntityA
 	@State var isEditing = false
 	@State var isToggled: Bool
@@ -33,6 +35,7 @@ struct EntityASourceListRowView: View
 				}
 				.textFieldStyle( .plain )
 			}
+			.environment( \.managedObjectContext, viewContext )
 			Spacer()
 			actionButton
 			toggleButton
@@ -47,7 +50,8 @@ struct EntityASourceListRowView: View
 					label:
 					{
 						Label( "Cancel", systemImage: "circle" )
-					}.keyboardShortcut( .return )
+					}
+					.keyboardShortcut( .return )	//	FIXME: Figure out why return key doesn't seem to trigger "cancel"
 				
 				Button( role: .destructive )
 					{

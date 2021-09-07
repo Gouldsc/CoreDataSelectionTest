@@ -21,7 +21,7 @@ struct EntityCSourceListRowView: View
 			Spacer()
 			Toggle( "title", isOn: $isToggled )
 				.onChange( of: self.isToggled, perform:
-							{
+				{
 					updateIsActivatedStatus( to: $0 )
 				} )
 				.labelsHidden()

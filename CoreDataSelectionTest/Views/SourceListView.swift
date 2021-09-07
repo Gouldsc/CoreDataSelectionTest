@@ -15,7 +15,7 @@ struct SourceListView: View
 	@FetchRequest( sortDescriptors: [],
 				   animation: .default )
 	private var entityAs: FetchedResults<EntityA>
-	
+		
 	//	MARK: - Group @FetchRequest
 	@FetchRequest( sortDescriptors: [],
 				   animation: .default )
@@ -40,7 +40,9 @@ struct SourceListView: View
 					(tEntityA: EntityA) in
 						EntityASourceListRowView( entityA: tEntityA,
 												isToggled: tEntityA.isActivated )
+						.environment( \.managedObjectContext, viewContext )
 				}
+
 			}
 			Section( "Groups" )
 			{

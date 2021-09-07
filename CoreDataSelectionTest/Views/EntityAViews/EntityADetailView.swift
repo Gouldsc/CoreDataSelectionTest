@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EntityADetailView: View
 {
+	@Environment( \.managedObjectContext ) private var viewContext
+
 	@Binding var entityA: EntityA
 	
     var body: some View
