@@ -10,25 +10,20 @@ import SwiftUI
 struct EntityADetailView: View
 {
 	@Binding var entityA: EntityA
-	@State var nameFieldText = ""
 	
     var body: some View
 	{
 		VStack
 		{
-			TextField( "\(entityA.name)", text: $nameFieldText )
+			Text( "\(entityA.name)" )
+			.font( .title )
+			.frame( alignment: .center )
+			
 			Text( "ID:\n \(entityA.objectID)." )
 				.font( .title3 )
 				.bold()
 		}
 		.padding()
-		.onChange( of: nameFieldText, perform: { updatePersistentStore( $0 ) })
-
+		.foregroundColor( entityA.isActivated ? Color.primary : .secondary )
     }
-	
-	func updatePersistentStore( _ ignoredString: String )
-	{
-		entityA.name = nameFieldText
-		PersistenceController.shared.save()
-	}
 }

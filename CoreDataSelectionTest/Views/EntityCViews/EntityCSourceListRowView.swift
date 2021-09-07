@@ -16,7 +16,7 @@ struct EntityCSourceListRowView: View
 	{
 		HStack
 		{
-			Image( systemName: "note.text" )
+			Image( systemName: "tag" )
 			NavigationLink( entityC.name, destination: EntityCDetailView( entityC: $entityC ) )
 			Spacer()
 			Toggle( "title", isOn: $isToggled )

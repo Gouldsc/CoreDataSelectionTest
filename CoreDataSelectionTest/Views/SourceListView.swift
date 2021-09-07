@@ -64,17 +64,29 @@ struct SourceListView: View
 			
 		.toolbar
 		{
-			Button( action: addEntityA )
+			ToolbarItem( placement: .primaryAction )
 			{
-				Label( "Add Item", systemImage: "plus" )
-			}
-			Button( action: addGroup )
-			{
-				Label( "Add Group", systemImage: "folder.fill.badge.plus" )
-			}
-			Button( action: addEntityC )
-			{
-				Label( "Add Entity C", systemImage: "note.text.badge.plus" )
+				Menu
+				{
+					Button( action: addEntityA )
+					{
+						Label( "Add Entity A", systemImage: "plus" )
+					}
+					
+					Button( action: addGroup )
+					{
+						Label( "Add Group", systemImage: "folder.fill.badge.plus" )
+					}
+					
+					Button( action: addEntityC )
+					{
+						Label( "Add Entity C", systemImage: "note.text.badge.plus" )
+					}
+				}
+				label:
+				{
+					Label( "Add", systemImage: "plus" )
+				}
 			}
 		}
 	}

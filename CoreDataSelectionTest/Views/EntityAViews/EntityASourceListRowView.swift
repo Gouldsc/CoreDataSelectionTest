@@ -10,34 +10,92 @@ import SwiftUI
 struct EntityASourceListRowView: View
 {
 	@State var entityA: EntityA
-	var name: String
-	{
-		get
-		{
-			entityA.name
-		}
-		set
-		{
-			entityA.name = newValue
-			PersistenceController.shared.save()
-		}
-	}
+	@State var isEditing = false
 	@State var isToggled: Bool
+	@State var isHovering = false
+	@State var isPresentingDeleteConfirmationAlert = false
 	
 	var body: some View
 	{
 		HStack
 		{
-			Image( systemName: "swift" )
-			NavigationLink( name, destination: EntityADetailView( entityA: $entityA ) )
-			Spacer()
-			Toggle( "title", isOn: $isToggled )
-				.onChange( of: self.isToggled, perform:
+			Image( systemName: "swift" ).foregroundColor( .orange )
+			NavigationLink( destination: EntityADetailView( entityA: $entityA )  )
+			{
+				TextField( "\($entityA.name)", text: $entityA.name )
 				{
-					updateIsActivatedStatus( to: $0 )
-				} )
-				.labelsHidden()
+					isEditing in
+						self.isEditing = isEditing
+				}
+				onCommit:
+				{
+					updatePersistentStore()
+				}
+				.textFieldStyle( .plain )
+			}
+			Spacer()
+			actionButton
+			toggleButton
+			
 		}
+		.onHover( perform: { tIsHovering in isHovering = tIsHovering } )
+		.alert( "Are you sure you want to permanently delete \( entityA.name )? This action cannot be undone.",
+				isPresented: $isPresentingDeleteConfirmationAlert,
+					actions:
+			{
+			Button( role: .cancel ){}
+				label:
+				{
+					Label( "Cancel", systemImage: "circle" )
+				}.keyboardShortcut( .return )
+			
+			Button( role: .destructive )
+				{
+					deleteItem()
+				}
+				label:
+				{
+					Label( "Delete \(entityA.name)", systemImage: "circle" )
+				}
+			})
+	}
+	
+	private var actionButton: some View
+	{
+		Image( systemName: "ellipsis.circle" )
+			.foregroundColor( .accentColor )
+			.opacity( isHovering ? 1 : 0 )
+			.contextMenu
+			{
+				Button
+				{
+					isEditing = true
+					//	FIXME: Need to add focus apis to the textfield and shift focus to it here.
+				}
+				label:
+				{
+					Label( "Rename", systemImage: "circle" )
+				}
+				
+				Button
+				{
+					isPresentingDeleteConfirmationAlert = true
+				}
+				label:
+				{
+					Label( "Delete \(entityA.name)", systemImage: "circle" )
+				}
+			}
+	}
+	
+	private var toggleButton: some View
+	{
+		Toggle( "title", isOn: $isToggled )
+			.onChange( of: self.isToggled, perform:
+						{
+				updateIsActivatedStatus( to: $0 )
+			} )
+			.labelsHidden()
 	}
 	
 	private func updateIsActivatedStatus( to: Bool )
@@ -50,6 +108,22 @@ struct EntityASourceListRowView: View
 			case false:
 				entityA.isActivated = false
 		}
+		updatePersistentStore()
+	}
+	
+	private func updatePersistentStore()
+	{
 		PersistenceController.shared.save()
+	}
+	
+	private func deleteItem()
+	{
+		guard let tManagedObjectContext = entityA.managedObjectContext
+		else
+		{
+			return
+		}
+		tManagedObjectContext.delete( entityA )
+		updatePersistentStore()
 	}
 }

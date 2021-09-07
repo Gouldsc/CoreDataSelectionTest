@@ -15,7 +15,7 @@ struct GroupSourceListRowView: View
 	{
 		HStack
 		{
-			Image( systemName: "folder.fill" )
+			Image( systemName: "folder" )
 			NavigationLink( group.name, destination: GroupDetailView( group: group ) )
 		}
 	}
