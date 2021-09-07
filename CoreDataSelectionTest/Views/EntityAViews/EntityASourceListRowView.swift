@@ -104,14 +104,7 @@ struct EntityASourceListRowView: View
 	
 	private func updateIsActivatedStatus( to: Bool )
 	{
-		switch isToggled
-		{
-			case true:
-				entityA.isActivated = true
-				
-			case false:
-				entityA.isActivated = false
-		}
+		entityA.isActivated = isToggled
 		updatePersistentStore()
 	}
 	
