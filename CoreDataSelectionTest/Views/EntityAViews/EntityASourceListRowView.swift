@@ -43,21 +43,21 @@ struct EntityASourceListRowView: View
 				isPresented: $isPresentingDeleteConfirmationAlert,
 					actions:
 			{
-			Button( role: .cancel ){}
-				label:
-				{
-					Label( "Cancel", systemImage: "circle" )
-				}.keyboardShortcut( .return )
-			
-			Button( role: .destructive )
-				{
-					deleteItem()
-				}
-				label:
-				{
-					Label( "Delete \(entityA.name)", systemImage: "circle" )
-				}
-			})
+				Button( role: .cancel ){}
+					label:
+					{
+						Label( "Cancel", systemImage: "circle" )
+					}.keyboardShortcut( .return )
+				
+				Button( role: .destructive )
+					{
+						deleteItem()
+					}
+					label:
+					{
+						Label( "Delete \(entityA.name)", systemImage: "circle" )
+					}
+			} )
 	}
 	
 	private var actionButton: some View

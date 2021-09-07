@@ -24,6 +24,6 @@ struct EntityADetailView: View
 				.bold()
 		}
 		.padding()
-		.foregroundColor( entityA.isActivated ? Color.primary : .secondary )
+		.foregroundColor( entityA.isActivated ? .accentColor : .secondary )
     }
 }

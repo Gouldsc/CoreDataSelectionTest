@@ -21,7 +21,7 @@ struct GroupDetailView: View
 	
 	var body: some View
 	{
-		VStack
+		VStack( alignment: .leading )
 		{
 			Text( group.name )
 				.font(.largeTitle)
@@ -32,21 +32,25 @@ struct GroupDetailView: View
 				tEntityA in
 					HStack
 					{
-						Text( tEntityA.name )
-							.foregroundColor( group.contains( entityA: tEntityA ) ? .green : .gray )
-						Spacer()
 						Button( action:
-								{
-									addOrRemove( entity: tEntityA )
-								} )
-								{
-									Image( systemName: group.contains( entityA: tEntityA ) ? "minus.circle" : "plus.circle" )
-								}
-								.foregroundColor( group.contains( entityA: tEntityA ) ? .red : .green )
-								.buttonStyle( .plain )
+						{
+							addOrRemove( entity: tEntityA )
+						} )
+						{
+							Image( systemName: group.contains( entityA: tEntityA ) ? "minus.circle" : "plus.circle" )
+						}
+						.foregroundColor( group.contains( entityA: tEntityA ) ? .red : .green )
+						.buttonStyle( .plain )
+						.padding( .trailing, 10 )
+						
+						Text( tEntityA.name )
+							.foregroundColor( group.contains( entityA: tEntityA ) ? .accentColor : .secondary )
 					}
+					
 			}
-		}.padding( 50 )
+			
+		}
+		.padding( 50 )
 	}
 	
 	private func addOrRemove( entity theEntity: EntityA )
