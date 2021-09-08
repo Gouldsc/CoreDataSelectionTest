@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-//struct GroupSourceListRowView: View
-//{
-//	@State var group: Group
-//
-//	var body: some View
-//	{
-//		HStack
-//		{
-//			Image( systemName: "folder" )
-//			NavigationLink( group.name, destination: GroupDetailView( group: group ) )
-//		}
-//	}
-//}
-
 struct GroupSourceListRowView: View
 {
 	@State var group: Group
