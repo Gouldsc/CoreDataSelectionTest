@@ -13,7 +13,7 @@ struct GroupDetailView: View
 	
 	//	MARK: - EntityA @FetchRequest
 	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityA.name_,
-													   ascending: true )],
+													 ascending: true )],
 				   animation: .default )
 	private var entityAs: FetchedResults<EntityA>
 		
@@ -46,9 +46,7 @@ struct GroupDetailView: View
 						Text( tEntityA.name )
 							.foregroundColor( group.contains( entityA: tEntityA ) ? .accentColor : .secondary )
 					}
-					
 			}
-			
 		}
 		.padding( 50 )
 	}

@@ -17,7 +17,7 @@
 		9691A0DD26DD84F000791687 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0DC26DD84F000791687 /* ContentView.swift */; };
 		9691A0DF26DD84F100791687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9691A0DE26DD84F100791687 /* Assets.xcassets */; };
 		9691A0E226DD84F100791687 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9691A0E126DD84F100791687 /* Preview Assets.xcassets */; };
-		9691A0E426DD84F100791687 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0E326DD84F100791687 /* Persistence.swift */; };
+		9691A0E426DD84F100791687 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0E326DD84F100791687 /* PersistenceController.swift */; };
 		9691A0E726DD84F100791687 /* CoreDataSelectionTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0E526DD84F100791687 /* CoreDataSelectionTest.xcdatamodeld */; };
 		9691A0F126DD84F100791687 /* CoreDataSelectionTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0F026DD84F100791687 /* CoreDataSelectionTestTests.swift */; };
 		9691A0FB26DD84F100791687 /* CoreDataSelectionTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A0FA26DD84F100791687 /* CoreDataSelectionTestUITests.swift */; };
@@ -60,7 +60,7 @@
 		9691A0DC26DD84F000791687 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9691A0DE26DD84F100791687 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9691A0E126DD84F100791687 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9691A0E326DD84F100791687 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		9691A0E326DD84F100791687 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		9691A0E626DD84F100791687 /* CoreDataSelectionTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataSelectionTest.xcdatamodel; sourceTree = "<group>"; };
 		9691A0EC26DD84F100791687 /* CoreDataSelectionTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataSelectionTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9691A0F026DD84F100791687 /* CoreDataSelectionTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSelectionTestTests.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		9691A11226DDCA0F00791687 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9691A0E326DD84F100791687 /* Persistence.swift */,
+				9691A0E326DD84F100791687 /* PersistenceController.swift */,
 				9691A10F26DDC9DF00791687 /* Selection.swift */,
 			);
 			path = Models;
@@ -366,7 +366,7 @@
 				9691A10E26DDBD4F00791687 /* EntityADetailView.swift in Sources */,
 				9691A10C26DDA9AA00791687 /* EntityA+helper.swift in Sources */,
 				9691A10A26DDA83D00791687 /* SelectableObject+helper.swift in Sources */,
-				9691A0E426DD84F100791687 /* Persistence.swift in Sources */,
+				9691A0E426DD84F100791687 /* PersistenceController.swift in Sources */,
 				96430A2426E0A6D900F850A2 /* EntityCSourceListRowView.swift in Sources */,
 				9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */,
 				96430A2826E0A78300F850A2 /* EntityC+helper.swift in Sources */,

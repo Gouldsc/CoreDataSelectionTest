@@ -42,8 +42,8 @@ struct SourceListView: View
 												isToggled: tEntityA.isActivated )
 						.environment( \.managedObjectContext, viewContext )
 				}
-
 			}
+			
 			Section( "Groups" )
 			{
 				ForEach( groups, id: \.id )
@@ -52,6 +52,7 @@ struct SourceListView: View
 						GroupSourceListRowView( group: tGroup )
 				}
 			}
+			
 			Section( "Entity C" )
 			{
 				ForEach( entityCs, id: \.id )
@@ -63,7 +64,6 @@ struct SourceListView: View
 			}
 		}
 		.listStyle( SidebarListStyle() )
-			
 		.toolbar
 		{
 			ToolbarItem( placement: .primaryAction )

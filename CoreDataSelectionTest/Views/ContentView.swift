@@ -5,6 +5,13 @@
 //  Created by Scott Gould on 8/30/21.
 //
 
+//	TODO: Drag reordering for SourceList
+//	TODO: Multiple Selection for SourceList
+//	TODO: Delete menu command for multipleSelection
+//	TODO: Implement the onHover "action" button contextMenu funcitonality with single click -- Default Menu macOS implementation uses popup menu which we don't want. See Notes.app for desired implementation
+//	TODO: Figure out why parent/chidren views aren't updating correctly
+
+
 import SwiftUI
 import CoreData
 
