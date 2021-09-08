@@ -26,7 +26,8 @@ extension SelectableObject
 	{
 		get
 		{
-			if userOrder_ == 0
+			if userOrder_ == 0 &&
+			   self.managedObjectContext != nil	//	This is necessesary to prevent a crash from a fetch by a detail view when the current object is selected and being deleted.
 			{
 				userOrder_ =  PersistenceController.shared.nextAvailableSortOrderValue( forEntity: self )
 				PersistenceController.shared.save()

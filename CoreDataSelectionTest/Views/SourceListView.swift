@@ -162,6 +162,7 @@ struct SourceListView: View
 		{
 			let tGroup = Group( context: viewContext )
 			tGroup.name = "Group: \(Date())"
+			tGroup.userOrder = PersistenceController.shared.nextAvailableSortOrderValue( forEntity: tGroup )
 			
 			PersistenceController.shared.save()
 		}
@@ -171,9 +172,9 @@ struct SourceListView: View
 	{
 		withAnimation
 		{
-			let entityC = EntityC( context: viewContext )
-			entityC.name = "EntityC: \(Date())"
-			
+			let tEntityC = EntityC( context: viewContext )
+			tEntityC.name = "EntityC: \(Date())"
+			tEntityC.userOrder = PersistenceController.shared.nextAvailableSortOrderValue( forEntity: tEntityC )
 			
 			PersistenceController.shared.save()
 		}
