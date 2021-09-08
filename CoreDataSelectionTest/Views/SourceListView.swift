@@ -43,7 +43,7 @@ struct SourceListView: View
 						EntityASourceListRowView( entityA: tEntityA,
 												isToggled: tEntityA.isActivated )
 						.environment( \.managedObjectContext, viewContext )
-				}
+				}.onMove( perform: move )
 			}
 			
 			Section( "Groups" )
@@ -99,8 +99,9 @@ struct SourceListView: View
 	{
 		withAnimation
 		{
-			let entityA = EntityA( context: viewContext )
-			entityA.name = "EntityA: \(Date())"
+			let tEntityA = EntityA( context: viewContext )
+			tEntityA.name = "EntityA: \(Date())"
+			tEntityA.userOrder = PersistenceController.shared.nextAvailableSortOrderValue( forEntity: tEntityA )
 			
 			PersistenceController.shared.save()
 		}
@@ -123,6 +124,7 @@ struct SourceListView: View
 		{
 			let entityC = EntityC( context: viewContext )
 			entityC.name = "EntityC: \(Date())"
+			
 			
 			PersistenceController.shared.save()
 		}
@@ -163,6 +165,21 @@ struct SourceListView: View
 					self.selection = tEntityId
 				} )
 	}
+	
+	private func move( from theSource: IndexSet, to theDestination: Int )
+	{
+		var tItemsToUpdate: [EntityA] = entityAs.map( {$0} )
+		tItemsToUpdate.move( fromOffsets: theSource, toOffset: theDestination )
+		
+		for tReverseIndex in stride( from: tItemsToUpdate.count - 1,
+								  through: 0,
+									   by: -1 )
+		{
+			tItemsToUpdate[tReverseIndex].userOrder = Int16( tReverseIndex + 1 )
+		}
+		PersistenceController.shared.save()
+	}
+
 }
 
 
