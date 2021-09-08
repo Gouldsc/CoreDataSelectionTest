@@ -24,6 +24,9 @@ struct EntityADetailView: View
 			Text( "ID:\n \(entityA.objectID)." )
 				.font( .title3 )
 				.bold()
+			Text( "userOrder: \(entityA.userOrder)." )
+				.font( .title3 )
+				.bold()
 		}
 		.padding()
 		.foregroundColor( entityA.isActivated ? .accentColor : .secondary )

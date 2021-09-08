@@ -74,7 +74,7 @@ struct PersistenceController
 		{
 			fatalError( "nextAvailableSortOrderValue(forEntity:) called and unable to retrieve a value for the 'userOrder_' attribute" )
 		}
-		return 0
+		return 1
 	}
 	
 	private func entityName( forEntity theEntity: SelectableObject ) -> String

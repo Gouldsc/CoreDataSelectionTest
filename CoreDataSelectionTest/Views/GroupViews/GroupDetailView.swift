@@ -27,6 +27,10 @@ struct GroupDetailView: View
 				.font(.largeTitle)
 				.bold()
 			
+			Text( "userOrder: \(group.userOrder)." )
+				.font( .title3 )
+				.bold()
+			
 			ForEach( entityAs )
 			{
 				tEntityA in

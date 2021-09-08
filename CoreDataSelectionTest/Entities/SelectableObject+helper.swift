@@ -29,6 +29,7 @@ extension SelectableObject
 			if userOrder_ == 0
 			{
 				userOrder_ =  PersistenceController.shared.nextAvailableSortOrderValue( forEntity: self )
+				PersistenceController.shared.save()
 			}
 			return userOrder_
 		}

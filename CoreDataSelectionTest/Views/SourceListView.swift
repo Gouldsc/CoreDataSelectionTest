@@ -12,17 +12,19 @@ struct SourceListView: View
 	@Environment( \.managedObjectContext ) private var viewContext
 	
 	//	MARK: - EntityA @FetchRequest
-	@FetchRequest( sortDescriptors: [],
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityA.userOrder_,
+													   ascending: true )],
 				   animation: .default )
 	private var entityAs: FetchedResults<EntityA>
 		
 	//	MARK: - Group @FetchRequest
-	@FetchRequest( sortDescriptors: [],
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \Group.userOrder_,
+													   ascending: true )],
 				   animation: .default )
 	private var groups: FetchedResults<Group>
 	
 	//	MARK: - EntityC @FetchRequest
-	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityC.name_,
+	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityC.userOrder_,
 													   ascending: true )],
 				   animation: .default )
 	private var entityCs: FetchedResults<EntityC>
