@@ -29,7 +29,7 @@ struct EntityADetailView: View
 		}
 		.padding()
 		.foregroundColor( entityA.isActivated ? .accentColor : .secondary )
-//		.focusedSceneValue( \.entityA, $entityA )
+		.focusedSceneValue( \.entityA, $entityA )
     }
 	
 

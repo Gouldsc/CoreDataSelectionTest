@@ -29,7 +29,7 @@ struct CoreDataSelectionTestApp: App
 		.commands
 		{
 			SidebarCommands()
-//			ItemCommands()
+			ItemCommands()
 		}
     }
 }

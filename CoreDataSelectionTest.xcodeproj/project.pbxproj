@@ -30,6 +30,7 @@
 		9691A11726DDD30F00791687 /* SourceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11626DDD30F00791687 /* SourceListView.swift */; };
 		9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */; };
 		96D6200326E92C2200F06A8A /* ItemsCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6200226E92C2200F06A8A /* ItemsCommands.swift */; };
+		96D6200526E9394900F06A8A /* FocusedValues+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6200426E9394900F06A8A /* FocusedValues+helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9691A11626DDD30F00791687 /* SourceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListView.swift; sourceTree = "<group>"; };
 		9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityASourceListRowView.swift; sourceTree = "<group>"; };
 		96D6200226E92C2200F06A8A /* ItemsCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCommands.swift; sourceTree = "<group>"; };
+		96D6200426E9394900F06A8A /* FocusedValues+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FocusedValues+helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				9691A0DA26DD84F000791687 /* CoreDataSelectionTestApp.swift */,
 				96D6200226E92C2200F06A8A /* ItemsCommands.swift */,
+				96D6200426E9394900F06A8A /* FocusedValues+helper.swift */,
 				9691A11126DDC9FF00791687 /* Views */,
 				9691A11C26DDD7EC00791687 /* ViewModels */,
 				9691A11226DDCA0F00791687 /* Models */,
@@ -364,6 +367,7 @@
 				96430A1F26E08A4800F850A2 /* GroupSourceListRowView.swift in Sources */,
 				9691A11026DDC9DF00791687 /* Selection.swift in Sources */,
 				96430A2126E08AE600F850A2 /* GroupDetailView.swift in Sources */,
+				96D6200526E9394900F06A8A /* FocusedValues+helper.swift in Sources */,
 				96430A2B26E2B84300F850A2 /* Group+helper.swift in Sources */,
 				96430A2626E0A73400F850A2 /* EntityCDetailView.swift in Sources */,
 				9691A10E26DDBD4F00791687 /* EntityADetailView.swift in Sources */,

@@ -7,40 +7,40 @@
 
 import SwiftUI
 
-//struct ItemCommands: Commands
-//{
-//	@FocusedBinding( \.entityA ) private var entityA: EntityA?
-//	
-//	var body: some Commands
-//	{
-//		CommandGroup( before: .newItem )
+struct ItemCommands: Commands
+{
+	@FocusedBinding( \.entityA ) private var entityA: EntityA?
+	
+	var body: some Commands
+	{
+		CommandMenu( "Items" )
+		{
+			EntityADescriptionButton( entityA: $entityA )
+		}
+		
+//		CommandMenu( "Plants" )
 //		{
-//			EntityADescriptionButton( entityA: $entityA )
+//			WaterPlantsButton( garden: $garden, plants: $selection )
 //		}
-//		
-////		CommandMenu( "Plants" )
-////		{
-////			WaterPlantsButton( garden: $garden, plants: $selection )
-////		}
-//	}
-//}
-//
-//struct EntityADescriptionButton: View
-//{
-//	@Binding var entityA: EntityA?
-//	
-//	var body: some View
-//	{
-//		Button
-//		{
-//			print( entityA?.name ?? "no entity" )
-//		}
-//		label:
-//		{
-//			Label( "Console print \(entityA?.name ?? "no entity")", systemImage: "swift" )
-//		}
-//		.keyboardShortcut( "L", modifiers: [.command] )
-//		.disabled( entityA == nil )
-//	}
-//}
+	}
+}
+
+struct EntityADescriptionButton: View
+{
+	@Binding var entityA: EntityA?
+	
+	var body: some View
+	{
+		Button
+		{
+			print( entityA?.name ?? "no entity" )
+		}
+		label:
+		{
+			Label( "Console print \(entityA?.name ?? "no entity")", systemImage: "swift" )
+		}
+		.keyboardShortcut( "L", modifiers: [.command] )
+		.disabled( entityA == nil )
+	}
+}
 
