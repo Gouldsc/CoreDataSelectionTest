@@ -8,42 +8,29 @@
 import SwiftUI
 
 struct EntityASourceListRowView: View
-{
-	@Environment( \.managedObjectContext ) private var viewContext
-	
+{	
 	@State var entityA: EntityA
 	@State var isEditing = false
 	@State var isToggled: Bool
 	@State var isHovering = false
-	@State var isPresentingDeleteConfirmationAlert = false
+	@State var isPresentingDeleteConfirmationDialogue = false
 	
 	var body: some View
 	{
 		HStack
 		{
-			Image( systemName: "swift" ).foregroundColor( .orange )
-			NavigationLink( destination: EntityADetailView( entityA: $entityA )  )
-			{
-				TextField( "\($entityA.name)", text: $entityA.name )
-				{
-					isEditing in
-						self.isEditing = isEditing
-				}
-				onCommit:
-				{
-					updatePersistentStore()
-				}
-				.textFieldStyle( .plain )
-			}
-			.environment( \.managedObjectContext, viewContext )
+			Image( systemName: "swift" )
+				.foregroundColor( Color( red: 0.9362769723,
+									   green: 0.3201830387,
+										blue: 0.2122102082 ) )
+			nameField
 			Spacer()
 			actionButton
 			toggleButton
-			
 		}
 		.onHover( perform: { tIsHovering in isHovering = tIsHovering } )
-		.alert( "Are you sure you want to permanently delete \( entityA.name )? This action cannot be undone.",
-				isPresented: $isPresentingDeleteConfirmationAlert,
+		.confirmationDialog( "Are you sure you want to permanently delete \( entityA.name )? This action cannot be undone.",
+				isPresented: $isPresentingDeleteConfirmationDialogue,
 					actions:
 			{
 				Button( role: .cancel ){}
@@ -64,6 +51,23 @@ struct EntityASourceListRowView: View
 			} )
 	}
 	
+	private var nameField: some View
+	{
+		NavigationLink( destination: EntityADetailView( entityA: $entityA )  )
+		{
+			TextField( "\($entityA.name)", text: $entityA.name )
+			{
+				isEditing in
+				self.isEditing = isEditing
+			}
+		onCommit:
+			{
+				updatePersistentStore()
+			}
+			.textFieldStyle( .plain )
+		}
+	}
+	
 	private var actionButton: some View
 	{
 		Image( systemName: "ellipsis.circle" )
@@ -71,24 +75,7 @@ struct EntityASourceListRowView: View
 			.opacity( isHovering ? 1 : 0 )
 			.contextMenu
 			{
-				Button
-				{
-					isEditing = true
-					//	FIXME: Need to add focus apis to the textfield and shift focus to it here.
-				}
-				label:
-				{
-					Label( "Rename", systemImage: "circle" )
-				}
-				
-				Button
-				{
-					isPresentingDeleteConfirmationAlert = true
-				}
-				label:
-				{
-					Label( "Delete \(entityA.name)", systemImage: "circle" )
-				}
+				menuItems
 			}
 	}
 	
@@ -96,10 +83,32 @@ struct EntityASourceListRowView: View
 	{
 		Toggle( "title", isOn: $isToggled )
 			.onChange( of: self.isToggled, perform:
-						{
+			{
 				updateIsActivatedStatus( to: $0 )
 			} )
 			.labelsHidden()
+	}
+	
+	@ViewBuilder private var menuItems: some View
+	{
+		Button
+		{
+			isEditing = true
+			//	FIXME: Need to add focus apis to the textfield and shift focus to it here.
+		}
+		label:
+		{
+			Label( "Rename", systemImage: "circle" )
+		}
+		
+		Button
+		{
+			isPresentingDeleteConfirmationDialogue = true
+		}
+		label:
+		{
+			Label( "Delete \(entityA.name)", systemImage: "circle" )
+		}
 	}
 	
 	private func updateIsActivatedStatus( to: Bool )

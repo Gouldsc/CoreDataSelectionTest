@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct GroupDetailView: View
-{
-	@Environment( \.managedObjectContext ) private var viewContext
-	
+{	
 	//	MARK: - EntityA @FetchRequest
 	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityA.name_,
 													 ascending: true )],

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct EntityADetailView: View
 {
-	@Environment( \.managedObjectContext ) private var viewContext
-
 	@Binding var entityA: EntityA
 	
     var body: some View
@@ -24,6 +22,7 @@ struct EntityADetailView: View
 			Text( "ID:\n \(entityA.objectID)." )
 				.font( .title3 )
 				.bold()
+			
 			Text( "userOrder: \(entityA.userOrder)." )
 				.font( .title3 )
 				.bold()

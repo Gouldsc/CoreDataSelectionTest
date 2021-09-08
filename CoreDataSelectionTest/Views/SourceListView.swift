@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SourceListView: View
 {
-	@Environment( \.managedObjectContext ) private var viewContext
-	
+	@Environment(\.managedObjectContext) private var viewContext
+
 	//	MARK: - EntityA @FetchRequest
 	@FetchRequest( sortDescriptors: [NSSortDescriptor( keyPath: \EntityA.userOrder_,
 													   ascending: true )],
@@ -42,8 +42,8 @@ struct SourceListView: View
 					(tEntityA: EntityA) in
 						EntityASourceListRowView( entityA: tEntityA,
 												isToggled: tEntityA.isActivated )
-						.environment( \.managedObjectContext, viewContext )
-				}.onMove( perform: move )
+				}
+				.onMove( perform: moveEntityAs )
 			}
 			
 			Section( "Groups" )
@@ -53,6 +53,7 @@ struct SourceListView: View
 					(tGroup: Group) in
 						GroupSourceListRowView( group: tGroup )
 				}
+				.onMove( perform: moveGroup )
 			}
 			
 			Section( "Entity C" )
@@ -63,6 +64,7 @@ struct SourceListView: View
 					EntityCSourceListRowView( entityC: tEntityC,
 											  isToggled: tEntityC.isActivated )
 				}
+				.onMove( perform: moveEntityCs )
 			}
 		}
 		.listStyle( SidebarListStyle() )
@@ -130,16 +132,6 @@ struct SourceListView: View
 		}
 	}
 	
-	private func deleteItems( offsets: IndexSet )
-	{
-		withAnimation
-		{
-			offsets.map { entityAs[$0] }.forEach( viewContext.delete )
-
-			PersistenceController.shared.save()
-		}
-	}
-	
 	private var entitySelection: Binding<SelectableObject.ID?>
 	{
 		Binding(
@@ -166,9 +158,27 @@ struct SourceListView: View
 				} )
 	}
 	
-	private func move( from theSource: IndexSet, to theDestination: Int )
+	private func moveEntityAs( from theSource: IndexSet, to theDestination: Int )
 	{
-		var tItemsToUpdate: [EntityA] = entityAs.map( {$0} )
+		let tItemsToUpdate: [EntityA] = entityAs.map( {$0} )
+		move( from: theSource, to: theDestination, itemsToUpdate: tItemsToUpdate )
+	}
+	
+	private func moveGroup( from theSource: IndexSet, to theDestination: Int )
+	{
+		let tItemsToUpdate: [Group] = groups.map( {$0} )
+		move( from: theSource, to: theDestination, itemsToUpdate: tItemsToUpdate )
+	}
+	
+	private func moveEntityCs( from theSource: IndexSet, to theDestination: Int )
+	{
+		let tItemsToUpdate: [EntityC] = entityCs.map( {$0} )
+		move( from: theSource, to: theDestination, itemsToUpdate: tItemsToUpdate )
+	}
+	
+	private func move( from theSource: IndexSet, to theDestination: Int, itemsToUpdate theItemsToUpdate: [SelectableObject] )
+	{
+		var tItemsToUpdate = theItemsToUpdate
 		tItemsToUpdate.move( fromOffsets: theSource, toOffset: theDestination )
 		
 		for tReverseIndex in stride( from: tItemsToUpdate.count - 1,

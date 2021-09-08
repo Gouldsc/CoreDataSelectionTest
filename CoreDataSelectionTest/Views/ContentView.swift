@@ -10,6 +10,7 @@
 //	TODO: Delete menu command for multipleSelection
 //	TODO: Implement the onHover "action" button contextMenu funcitonality with single click -- Default Menu macOS implementation uses popup menu which we don't want. See Notes.app for desired implementation
 //	TODO: Figure out why parent/chidren views aren't updating correctly
+//	TODO: Undo support
 
 
 import SwiftUI
@@ -29,6 +30,7 @@ struct ContentView: View
 		{
 			SourceListView( selection: $selectedListItemId )
 				.environment( \.managedObjectContext, viewContext )
+
 			Text( "Detail, no selection" )
 		}
     }
