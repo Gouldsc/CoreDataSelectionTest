@@ -54,4 +54,60 @@ struct PersistenceController
 		}
 		return container.viewContext.object( with: tNSManagedObjectID )
 	}
+	
+	func nextAvailableSortOrderValue( forEntity theEntity: SelectableObject ) -> Int16
+	{
+		let tEntityName = entityName( forEntity: theEntity )
+		let tKey = "userOrder_"
+		let tFetchRequest = highestUserOrderValueRequest( forEntityName: tEntityName )
+
+		do
+		{
+			let tFetchedData = try container.viewContext.fetch( tFetchRequest )
+			let tFirstObject = tFetchedData.first as! SelectableObject
+			if let tFoundValue = tFirstObject.value( forKey: tKey ) as? Int16
+			{
+				return tFoundValue + 1
+			}
+		}
+		catch
+		{
+			fatalError( "nextAvailableSortOrderValue(forEntity:) called and unable to retrieve a value for the 'userOrder_' attribute" )
+		}
+		return 0
+	}
+	
+	private func entityName( forEntity theEntity: SelectableObject ) -> String
+	{
+		var rEntityName = ""
+		
+		switch theEntity
+		{
+			case is EntityA:
+				rEntityName = "EntityA"
+				
+			case is Group:
+				rEntityName = "Group"
+				
+			case is EntityC:
+				rEntityName = "EntityC"
+				
+			default:
+				fatalError( "entityName(forEntity:) called with invalid object type: \( theEntity.entity )" )
+		}
+		return rEntityName
+	}
+	
+	private func highestUserOrderValueRequest( forEntityName theEntityName: String, key theKey: String = "userOrder_" ) -> NSFetchRequest<NSFetchRequestResult>
+	{
+		let rFetchRequest = NSFetchRequest<NSFetchRequestResult>( entityName: theEntityName )
+		rFetchRequest.fetchLimit = 1
+		rFetchRequest.propertiesToFetch = [theKey]
+		
+		let tIndexSort = NSSortDescriptor.init( key: theKey,
+										  ascending: false )
+		rFetchRequest.sortDescriptors = [tIndexSort]
+		
+		return rFetchRequest
+	}
 }

@@ -20,6 +20,9 @@ struct EntityCDetailView: View
 			Text( "ID:\n \(entityC.objectID)." )
 				.font( .title3 )
 				.bold()
+			Text( "userOrder: \(entityC.userOrder)" )
+				.font( .title3 )
+				.bold()
 		}
 		.padding()
 		.onChange( of: nameFieldText, perform: { updatePersistentStore( $0 ) })

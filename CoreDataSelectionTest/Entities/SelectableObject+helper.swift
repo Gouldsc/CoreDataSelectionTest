@@ -10,7 +10,7 @@ import CoreData
 
 extension SelectableObject
 {
-	var name: String
+	public var name: String
 	{
 		get
 		{
@@ -19,6 +19,22 @@ extension SelectableObject
 		set
 		{
 			name_ = newValue
+		}
+	}
+	
+	public var userOrder: Int16
+	{
+		get
+		{
+			if userOrder_ == 0
+			{
+				userOrder_ =  PersistenceController.shared.nextAvailableSortOrderValue( forEntity: self )
+			}
+			return userOrder_
+		}
+		set
+		{
+			userOrder_ = newValue
 		}
 	}
 	
