@@ -29,6 +29,7 @@
 		9691A11526DDCF9100791687 /* SelectionTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11426DDCF9100791687 /* SelectionTestViewModel.swift */; };
 		9691A11726DDD30F00791687 /* SourceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11626DDD30F00791687 /* SourceListView.swift */; };
 		9691A11B26DDD77700791687 /* EntityASourceListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */; };
+		96D6200326E92C2200F06A8A /* ItemsCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6200226E92C2200F06A8A /* ItemsCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		9691A11426DDCF9100791687 /* SelectionTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTestViewModel.swift; sourceTree = "<group>"; };
 		9691A11626DDD30F00791687 /* SourceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListView.swift; sourceTree = "<group>"; };
 		9691A11A26DDD77700791687 /* EntityASourceListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityASourceListRowView.swift; sourceTree = "<group>"; };
+		96D6200226E92C2200F06A8A /* ItemsCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				9691A0DA26DD84F000791687 /* CoreDataSelectionTestApp.swift */,
+				96D6200226E92C2200F06A8A /* ItemsCommands.swift */,
 				9691A11126DDC9FF00791687 /* Views */,
 				9691A11C26DDD7EC00791687 /* ViewModels */,
 				9691A11226DDCA0F00791687 /* Models */,
@@ -374,6 +377,7 @@
 				9691A11526DDCF9100791687 /* SelectionTestViewModel.swift in Sources */,
 				9691A0DB26DD84F000791687 /* CoreDataSelectionTestApp.swift in Sources */,
 				9691A0E726DD84F100791687 /* CoreDataSelectionTest.xcdatamodeld in Sources */,
+				96D6200326E92C2200F06A8A /* ItemsCommands.swift in Sources */,
 				9691A11726DDD30F00791687 /* SourceListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

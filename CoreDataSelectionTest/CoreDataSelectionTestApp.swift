@@ -26,5 +26,10 @@ struct CoreDataSelectionTestApp: App
             ContentView()
                 .environment( \.managedObjectContext, managedObjectContext )
         }
+		.commands
+		{
+			SidebarCommands()
+//			ItemCommands()
+		}
     }
 }
