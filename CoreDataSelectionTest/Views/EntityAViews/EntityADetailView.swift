@@ -31,6 +31,4 @@ struct EntityADetailView: View
 		.foregroundColor( entityA.isActivated ? .accentColor : .secondary )
 		.focusedSceneValue( \.entityA, $entityA )
     }
-	
-
 }

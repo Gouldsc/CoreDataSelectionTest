@@ -10,7 +10,7 @@ import SwiftUI
 struct GroupSourceListRowView: View
 {
 	@State var group: Group
-	@State var isEditing = false
+	@FocusState var isEditing: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false
 	
@@ -19,7 +19,7 @@ struct GroupSourceListRowView: View
 		HStack
 		{
 			Image( systemName: "folder" )
-				.foregroundColor( .purple )
+				.foregroundColor( .primary )
 			nameField
 			Spacer()
 			actionButton
@@ -60,6 +60,7 @@ struct GroupSourceListRowView: View
 			{
 				updatePersistentStore()
 			}
+			.focused( $isEditing )
 			.textFieldStyle( .plain )
 		}
 	}
@@ -82,7 +83,7 @@ struct GroupSourceListRowView: View
 			isEditing = true
 			//	FIXME: Need to add focus apis to the textfield and shift focus to it here.
 		}
-	label:
+		label:
 		{
 			Label( "Rename", systemImage: "circle" )
 		}
@@ -91,7 +92,7 @@ struct GroupSourceListRowView: View
 		{
 			isPresentingDeleteConfirmationDialogue = true
 		}
-	label:
+		label:
 		{
 			Label( "Delete \(group.name)", systemImage: "circle" )
 		}

@@ -37,6 +37,7 @@ struct SourceListView: View
 			groupSection
 			entityCSection
 		}
+		.focusedSceneValue( \.selection, $selection )
 		.listStyle( SidebarListStyle() )
 		.toolbar
 		{
@@ -214,7 +215,6 @@ struct SourceListView: View
 		}
 		PersistenceController.shared.save()
 	}
-
 }
 
 

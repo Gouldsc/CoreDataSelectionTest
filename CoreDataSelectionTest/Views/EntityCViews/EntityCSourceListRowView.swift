@@ -10,7 +10,7 @@ import SwiftUI
 struct EntityCSourceListRowView: View
 {
 	@State var entityC: EntityC
-	@State var isEditing = false
+	@FocusState var isEditing: Bool
 	@State var isToggled: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false
@@ -19,8 +19,8 @@ struct EntityCSourceListRowView: View
 	{
 		HStack
 		{
-			Image( systemName: "tag" )
-				.foregroundColor( .green )
+			Image( systemName: "allergens" )
+				.foregroundColor( .primary )
 			nameField
 			Spacer()
 			actionButton
@@ -62,6 +62,7 @@ struct EntityCSourceListRowView: View
 			{
 				updatePersistentStore()
 			}
+			.focused( $isEditing )
 			.textFieldStyle( .plain )
 		}
 	}
@@ -94,7 +95,7 @@ struct EntityCSourceListRowView: View
 			isEditing = true
 			//	FIXME: Need to add focus apis to the textfield and shift focus to it here.
 		}
-	label:
+		label:
 		{
 			Label( "Rename", systemImage: "circle" )
 		}
@@ -103,7 +104,7 @@ struct EntityCSourceListRowView: View
 		{
 			isPresentingDeleteConfirmationDialogue = true
 		}
-	label:
+		label:
 		{
 			Label( "Delete \(entityC.name)", systemImage: "circle" )
 		}

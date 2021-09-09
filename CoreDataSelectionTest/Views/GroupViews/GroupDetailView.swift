@@ -51,6 +51,7 @@ struct GroupDetailView: View
 			}
 		}
 		.padding( 50 )
+		.focusedSceneValue( \.group, $group )
 	}
 	
 	private func addOrRemove( entity theEntity: EntityA )

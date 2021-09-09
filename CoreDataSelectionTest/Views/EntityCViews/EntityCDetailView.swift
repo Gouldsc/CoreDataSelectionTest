@@ -29,5 +29,6 @@ struct EntityCDetailView: View
 		}
 		.padding()
 		.foregroundColor( entityC.isActivated ? .accentColor : .secondary )
+		.focusedSceneValue( \.entityC, $entityC )
 	}
 }

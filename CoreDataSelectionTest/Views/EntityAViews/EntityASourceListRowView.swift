@@ -10,7 +10,7 @@ import SwiftUI
 struct EntityASourceListRowView: View
 {	
 	@State var entityA: EntityA
-	@State var isEditing = false
+	@FocusState var isEditing: Bool
 	@State var isToggled: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false
@@ -33,21 +33,7 @@ struct EntityASourceListRowView: View
 				isPresented: $isPresentingDeleteConfirmationDialogue,
 					actions:
 			{
-				Button( role: .cancel ){}
-					label:
-					{
-						Label( "Cancel", systemImage: "circle" )
-					}
-					.keyboardShortcut( .return )	//	FIXME: Figure out why return key doesn't seem to trigger "cancel"
-				
-				Button( role: .destructive )
-					{
-						deleteItem()
-					}
-					label:
-					{
-						Label( "Delete \(entityA.name)", systemImage: "circle" )
-					}
+				deleteOrCancelButtons
 			} )
 	}
 	
@@ -60,10 +46,11 @@ struct EntityASourceListRowView: View
 				isEditing in
 				self.isEditing = isEditing
 			}
-		onCommit:
+			onCommit:
 			{
 				updatePersistentStore()
 			}
+			.focused( $isEditing )
 			.textFieldStyle( .plain )
 		}
 	}
@@ -87,6 +74,25 @@ struct EntityASourceListRowView: View
 				updateIsActivatedStatus( to: $0 )
 			} )
 			.labelsHidden()
+	}
+	
+	@ViewBuilder private var deleteOrCancelButtons: some View
+	{
+		Button( role: .cancel ){}
+		label:
+		{
+			Label( "Cancel", systemImage: "circle" )
+		}
+		.keyboardShortcut( .return )	//	FIXME: Figure out why return key doesn't seem to trigger "cancel"
+		
+		Button( role: .destructive )
+		{
+			deleteItem()
+		}
+		label:
+		{
+			Label( "Delete \(entityA.name)", systemImage: "circle" )
+		}
 	}
 	
 	@ViewBuilder private var menuItems: some View
