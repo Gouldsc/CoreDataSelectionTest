@@ -15,7 +15,7 @@ struct GroupDetailView: View
 				   animation: .default )
 	private var entityAs: FetchedResults<EntityA>
 		
-	@State var group: Group
+	@ObservedObject var group: Group
 	
 	var body: some View
 	{
@@ -51,7 +51,7 @@ struct GroupDetailView: View
 			}
 		}
 		.padding( 50 )
-		.focusedSceneValue( \.group, $group )
+//		.focusedSceneValue( \.group, group )
 	}
 	
 	private func addOrRemove( entity theEntity: EntityA )

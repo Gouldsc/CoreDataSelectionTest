@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EntityCSourceListRowView: View
 {
-	@State var entityC: EntityC
+	@ObservedObject var entityC: EntityC
 	@FocusState var isEditing: Bool
 	@State var isToggled: Bool
 	@State var isHovering = false
@@ -51,7 +51,7 @@ struct EntityCSourceListRowView: View
 
 	private var nameField: some View
 	{
-		NavigationLink( destination: EntityCDetailView( entityC: $entityC )  )
+		NavigationLink( destination: EntityCDetailView( entityC: entityC )  )
 		{
 			TextField( "\($entityC.name)", text: $entityC.name )
 			{

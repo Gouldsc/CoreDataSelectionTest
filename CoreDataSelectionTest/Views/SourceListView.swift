@@ -204,6 +204,7 @@ struct SourceListView: View
 	
 	private func move( from theSource: IndexSet, to theDestination: Int, itemsToUpdate theItemsToUpdate: [SelectableObject] )
 	{
+		selection = nil
 		var tItemsToUpdate = theItemsToUpdate
 		tItemsToUpdate.move( fromOffsets: theSource, toOffset: theDestination )
 		
@@ -213,7 +214,13 @@ struct SourceListView: View
 		{
 			tItemsToUpdate[tReverseIndex].userOrder = Int16( tReverseIndex + 1 )
 		}
-		PersistenceController.shared.save()
+		
+		//	To prevent simultaneous access to the @ObservedObject, we call Save after the move is completed
+		DispatchQueue.main.asyncAfter(deadline: .now() )
+		{
+			PersistenceController.shared.save()
+
+		}
 	}
 }
 

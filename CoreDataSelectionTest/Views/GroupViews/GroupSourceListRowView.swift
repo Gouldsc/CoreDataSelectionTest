@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroupSourceListRowView: View
 {
-	@State var group: Group
+	@ObservedObject var group: Group
 	@FocusState var isEditing: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false

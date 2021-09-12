@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EntityADetailView: View
 {
-	@Binding var entityA: EntityA
+	@ObservedObject var entityA: EntityA
 	
     var body: some View
 	{
@@ -29,6 +29,6 @@ struct EntityADetailView: View
 		}
 		.padding()
 		.foregroundColor( entityA.isActivated ? .accentColor : .secondary )
-		.focusedSceneValue( \.entityA, $entityA )
+//		.focusedSceneValue( \.entityA, $entityA )
     }
 }
