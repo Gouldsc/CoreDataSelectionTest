@@ -13,6 +13,7 @@ struct GroupSourceListRowView: View
 	@FocusState var isEditing: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false
+	@State var detailViewIsActive = true
 	
 	var body: some View
 	{
@@ -49,7 +50,9 @@ struct GroupSourceListRowView: View
 	
 	private var nameField: some View
 	{
-		NavigationLink( destination: GroupDetailView( group: group )  )
+		NavigationLink( isActive: $detailViewIsActive,
+						destination: { GroupDetailView( group: group ) },
+						label:
 		{
 			TextField( "\($group.name)", text: $group.name )
 			{
@@ -62,7 +65,7 @@ struct GroupSourceListRowView: View
 			}
 			.focused( $isEditing )
 			.textFieldStyle( .plain )
-		}
+		} )
 	}
 	
 	private var actionButton: some View
@@ -110,7 +113,12 @@ struct GroupSourceListRowView: View
 		{
 			return
 		}
+		detailViewIsActive = false
 		tManagedObjectContext.delete( group )
-		updatePersistentStore()
-	}
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() )
+		{
+			PersistenceController.shared.save()
+			
+		}	}
 }

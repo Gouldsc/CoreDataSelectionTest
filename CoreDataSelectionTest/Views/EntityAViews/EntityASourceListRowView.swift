@@ -14,6 +14,7 @@ struct EntityASourceListRowView: View
 	@State var isToggled: Bool
 	@State var isHovering = false
 	@State var isPresentingDeleteConfirmationDialogue = false
+	@State var detailViewIsActive = true
 	
 	var body: some View
 	{
@@ -39,7 +40,9 @@ struct EntityASourceListRowView: View
 	
 	private var nameField: some View
 	{
-		NavigationLink( destination: EntityADetailView( entityA: entityA )  )
+		NavigationLink( isActive: $detailViewIsActive,
+						destination: { EntityADetailView( entityA: entityA ) },
+						label:
 		{
 			TextField( "\($entityA.name)", text: $entityA.name )
 			{
@@ -52,7 +55,7 @@ struct EntityASourceListRowView: View
 			}
 			.focused( $isEditing )
 			.textFieldStyle( .plain )
-		}
+		} )
 	}
 	
 	private var actionButton: some View
@@ -135,7 +138,12 @@ struct EntityASourceListRowView: View
 		{
 			return
 		}
+		detailViewIsActive = false
 		tManagedObjectContext.delete( entityA )
-		updatePersistentStore()
+		DispatchQueue.main.asyncAfter(deadline: .now() )
+		{
+			PersistenceController.shared.save()
+			
+		}
 	}
 }
